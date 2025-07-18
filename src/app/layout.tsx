@@ -40,7 +40,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <div className="hidden lg:block lg:col-span-3">
                       <Sidebar />
                     </div>
-                    <div className="lg:col-span-9">{children}</div>
+                    <div className="lg:col-span-9">{children}</div> 
+                    {/* thus, the children(all pages) are exclusive of the sidebar and navbar completely */}
                   </div> 
                 </div>
               </main>
