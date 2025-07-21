@@ -66,3 +66,46 @@ export async function getDbUserId(){
 
   return user.id
 }
+
+export async function getRandomUsers(){
+  try{
+    const userId = await getDbUserId();
+
+    //get 3 random users excluding ourselves & users we already follow
+    const randomUsers = await prisma.user.findMany({
+      where: {
+        AND:[ //2 condns to and
+          {NOT:{id:userId}},
+          {
+            NOT:{
+              followers:{
+                //followers field of fetched user shouldnt be same as current user id
+                some:{
+                  followerId: userId
+                }
+              }
+            }
+          }
+        ]
+      },
+      select:{
+        id: true,
+        name: true,
+        username: true,
+        image: true,
+        _count:{
+          select:{
+            followers: true,
+          }
+        }
+      },
+      take:3,
+    })
+
+    return randomUsers;
+  }
+  catch(error){
+    console.log("Error fetching random users", error);
+    return [];
+  }
+}

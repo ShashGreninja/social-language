@@ -3,7 +3,7 @@
 import { useUser } from "@clerk/nextjs"
 import { useState } from "react";
 import { Card, CardContent } from "./ui/card";
-import { Avatar, AvatarImage } from "@radix-ui/react-avatar";
+import { Avatar, AvatarImage } from "./ui/avatar"
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
 import { ImageIcon, Loader2Icon, SendIcon } from "lucide-react";
@@ -50,7 +50,7 @@ function CreatePost() {
           <div className = "space-y-4">
             <div className = "flex space-x-4">
               <Avatar className = "w-10 h-10">
-                <AvatarImage className = "w-10 h-10" />
+                <AvatarImage />
               </Avatar>
               <Textarea
                 placeholder = "What's on your mind?"
