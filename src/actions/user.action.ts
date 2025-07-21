@@ -1,6 +1,7 @@
 "use server";
 import { prisma } from '@/lib/prisma';
 import { auth, currentUser } from '@clerk/nextjs/server';
+import { revalidatePath } from 'next/cache';
 //purpose is to connect clerk auth to neon db on cloud
 import React from 'react'
 
@@ -156,6 +157,7 @@ export async function toggleFollow(targetUserId:string){
         })
       ])
     }
+    revalidatePath("/"); //purge cache in home page for instant changes in ui
     return {success: true}
   }
   catch(error){
