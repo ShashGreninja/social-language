@@ -1,6 +1,6 @@
 "use client"
 
-import { useUser } from "@clerk/nextjs"
+import { useUser } from "@clerk/nextjs";
 import { useState } from "react";
 import { Card, CardContent } from "./ui/card";
 import { Avatar, AvatarImage } from "./ui/avatar"
@@ -50,7 +50,7 @@ function CreatePost() {
           <div className = "space-y-4">
             <div className = "flex space-x-4">
               <Avatar className = "w-10 h-10">
-                <AvatarImage />
+                <AvatarImage src={user.user?.imageUrl || "/avatar.png"} />
               </Avatar>
               <Textarea
                 placeholder = "What's on your mind?"
