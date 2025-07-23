@@ -1,6 +1,6 @@
 "use client"
 
-import { getPosts } from '@/actions/post.action';
+import { getPosts, toggleLike } from '@/actions/post.action';
 import { useUser } from '@clerk/nextjs';
 // import { Post } from '@prisma/client';
 import React, { useState } from 'react'
